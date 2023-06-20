@@ -8,11 +8,7 @@
  */
 int _abs(int n)
 {
-	if (n == INT_MIN)
-	{
-		return (INT_MAX);
-	}
-	else if (n < 0)
+	if (n < 0)
 	{
 		return (-n);
 	}
@@ -31,7 +27,16 @@ int _abs(int n)
  */
 int print_last_digit(int n)
 {
-	int last_digit = _abs(n) % 10;
+	int last_digit;
+
+	if (n == INT_MIN)
+	{
+		last_digit = -(n % 10);
+	}
+	else
+	{
+		last_digit = _abs(n) % 10;
+	}
 
 	_putchar(last_digit + '0');
 
