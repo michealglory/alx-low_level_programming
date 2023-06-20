@@ -13,3 +13,5 @@ void print_to_98(int n);
 int prepare_k(int i);
 void add_spacer(int i);
 void print_to_output(int k);
+void print_times_table(int n);
+void print_to_output(int i, int j);
