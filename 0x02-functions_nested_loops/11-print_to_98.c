@@ -30,6 +30,7 @@ void print_to_98(int n)
 			add_spacer(i);
 		}
 	}
+	_putchar('\n');
 }
 
 /**
