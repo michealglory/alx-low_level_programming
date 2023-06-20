@@ -1,15 +1,4 @@
-#include <stdio.h>
-
-/**
- * _putchar - Writes a character to the standard output
- * @c: The character to be written
- *
- * Return: void
- */
-void _putchar(char c)
-{
-	putchar(c);
-}
+#include "main.h"
 
 /**
  * main - Entry point of the program
@@ -26,5 +15,6 @@ int main(void)
 		_putchar(str[i]);
 	}
 
-	return 0;
+	return (0);
 }
+
