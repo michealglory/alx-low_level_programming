@@ -12,9 +12,9 @@ int main(void)
 {
 	unsigned long secondToLast = 1;
 	unsigned long last = 2;
+	int i = 2;
 
 	printf("%lu, %lu, ", secondToLast, last);
-	int i = 2;
 
 	while (i <= 50)
 	{
