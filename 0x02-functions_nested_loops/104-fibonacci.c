@@ -1,0 +1,36 @@
+#include <stdio.h>
+/**
+ * main - Entry point of the program
+ *
+ * Description: Prints the first 98 numbers in
+ * the Fibonacci sequence. Each number is separated by a comma.
+ *
+ * Return: 0 (Success)
+ */
+int main(void)
+{
+	unsigned long secondToLast = 1;
+	unsigned long last = 2;
+	int i = 3;
+
+	printf("%lu, %lu, ", secondToLast, last);
+
+	while (i <= 98)
+	{
+		unsigned long newFibo = last + secondToLast;
+
+		printf("%lu", newFibo);
+		secondToLast = last;
+		last = newFibo;
+
+		if (i != 98)
+		{
+			printf(", ");
+		}
+
+		i += 1;
+	}
+
+	printf("\n");
+	return (0);
+}
