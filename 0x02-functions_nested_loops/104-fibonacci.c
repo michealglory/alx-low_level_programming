@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define DIGITS 1000
+
 /**
  * main - Prints the first 98 Fibonacci numbers
  *
@@ -12,37 +14,50 @@
  */
 int main(void)
 {
-	unsigned long int count, prev1, prev2, upper1, upper2, lower1, lower2;
+	int count, digit;
+	unsigned int fib1[DIGITS] = {0}, fib2[DIGITS] = {0}, fib3[DIGITS] = {0};
 
-	prev1 = 1;
-	prev2 = 2;
+	fib1[DIGITS - 1] = 1;
+	fib2[DIGITS - 1] = 2;
 
-	printf("%lu", prev1);
+	printf("%d", fib2[DIGITS - 1]);
 
-	for (count = 1; count < 91; count++)
+	for (count = 3; count <= 98; count++)
 	{
-		printf(", %lu", prev2);
-		prev2 += prev1;
-		prev1 = prev2 - prev1;
-	}
+		for (digit = DIGITS - 1; digit >= 0; digit--)
+		{
+			fib3[digit] += fib1[digit] + fib2[digit];
 
-	upper1 = prev1 / 1000000000;
-	upper2 = prev1 % 1000000000;
-	lower1 = prev2 / 1000000000;
-	lower2 = prev2 % 1000000000;
+			if (fib3[digit] > 9)
+			{
+				fib3[digit - 1] += fib3[digit] / 10;
+				fib3[digit] %= 10;
+			}
+		}
 
-	for (count = 92; count < 99; ++count)
-	{
-		printf(", %lu", upper1 + (upper2 / 1000000000));
-		printf("%lu", upper2 % 1000000000);
-		upper1 += lower1;
-		lower1 = upper1 - lower1;
-		upper2 += lower2;
-		lower2 = upper2 - lower2;
+		printf(", ");
+
+		/* Print leading zeros if necessary */
+		for (digit = 0; digit < DIGITS; digit++)
+		{
+			if (fib3[digit] != 0)
+				break;
+		}
+
+		for (; digit < DIGITS; digit++)
+			printf("%d", fib3[digit]);
+
+		/* Shift the digits for the next iteration */
+		for (digit = 0; digit < DIGITS; digit++)
+		{
+			fib1[digit] = fib2[digit];
+			fib2[digit] = fib3[digit];
+			fib3[digit] = 0;
+		}
 	}
 
 	printf("\n");
 
-	return (0);
+	return 0;
 }
 
