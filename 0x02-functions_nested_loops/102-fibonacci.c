@@ -12,7 +12,7 @@ int main(void)
 {
 	unsigned long secondToLast = 1;
 	unsigned long last = 2;
-	int i = 2;
+	int i = 3;
 
 	printf("%lu, %lu, ", secondToLast, last);
 
