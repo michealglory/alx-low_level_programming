@@ -17,7 +17,7 @@ void print_times_table(int n)
 		{
 			for (j = 0; j < n + 1; j++)
 			{
-				print_to_output(i, j);
+				print_to_output2(i, j);
 				if (j != n)
 				{
 					_putchar(',');
@@ -37,7 +37,7 @@ void print_times_table(int n)
 }
 
 /**
- * print_to_output - Prints the product of two numbers
+ * print_to_output2 - Prints the product of two numbers
  * @i: The first number
  * @j: The second number
  *
@@ -45,7 +45,7 @@ void print_times_table(int n)
  * numbers and prints the result using the _putchar function.
  * It takes care of formatting the output.
  */
-void print_to_output(int i, int j)
+void print_to_output2(int i, int j)
 {
 	int value = i * j;
 
