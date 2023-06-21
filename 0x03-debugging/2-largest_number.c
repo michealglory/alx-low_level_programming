@@ -7,17 +7,22 @@
  * @c: third integer
  * Return: largest number
  */
-long long largest_number(long long a, long long b, long long c)
-{
-	long long numbers[3] = {a, b, c};
-	long long largest = numbers[0];
 
-	for (int i = 1; i < 3; i++)
+int largest_number(int a, int b, int c)
+{
+	int largest;
+
+	if (a > b && a > c)
 	{
-		if (numbers[i] > largest)
-		{
-			largest = numbers[i];
-		}
+		largest = a;
+	}
+	else if (b > a && b > c)
+	{
+		largest = b;
+	}
+	else
+	{
+		largest = c;
 	}
 
 	return (largest);
