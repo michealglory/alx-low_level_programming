@@ -34,7 +34,7 @@ void print_remaining_days(int month, int day, int year)
 	if (day < 1 || day > max_days_in_month)
 	{
 		printf("Invalid date: %02d/%02d/%04d\n", month, day, year);
-		return ();
+		return;
 	}
 
 	day_of_year = convert_day(month, day);
