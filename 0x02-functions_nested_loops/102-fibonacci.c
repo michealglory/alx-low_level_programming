@@ -10,17 +10,17 @@
  */
 int main(void)
 {
-	long long secondToLast = 1;
-	long long last = 2;
+	unsigned long secondToLast = 1;
+	unsigned long last = 2;
 
-	printf("%lld, %lld, ", secondToLast, last);
+	printf("%lu, %lu, ", secondToLast, last);
 	int i = 2;
 
 	while (i <= 50)
 	{
-		long long newFibo = last + secondToLast;
+		unsigned long newFibo = last + secondToLast;
 
-		printf("%lld", newFibo);
+		printf("%lu", newFibo);
 		secondToLast = last;
 		last = newFibo;
 
