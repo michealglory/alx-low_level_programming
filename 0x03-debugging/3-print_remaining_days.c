@@ -11,7 +11,9 @@
  */
 void print_remaining_days(int month, int day, int year)
 {
-	int is_leap_year = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+	int remaining_days;
+	int is_leap_year; 
+	is_leap_year = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 
 	if (is_leap_year && month == 2 && day > 29)
 	{
@@ -20,7 +22,7 @@ void print_remaining_days(int month, int day, int year)
 		month++;
 	}
 
-	int remaining_days = is_leap_year ? 366 - day : 365 - day;
+	remaining_days = is_leap_year ? 366 - day : 365 - day;
 
 	printf("Day of the year: %d\n", day);
 	printf("Remaining days: %d\n", remaining_days);
