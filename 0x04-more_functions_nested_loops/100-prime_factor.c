@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * largest_prime_factor - Finds the largest prime factor of a number
+ * main - Finds the largest prime factor of a number
  *
  * Return: 0 on success
  */
@@ -39,4 +39,3 @@ int main(void)
 
 	return (0);
 }
-
