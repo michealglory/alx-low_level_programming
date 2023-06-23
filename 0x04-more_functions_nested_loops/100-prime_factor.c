@@ -7,14 +7,16 @@
  */
 int main(void)
 {
-	long factor;
-	long largest;
-	long value;
-	long tempValue;
+	long int factor;
+	long int largest;
+	long int value;
+	long int tempValue;
+	long int largest2;
 
 	tempValue = 612852475143;
 	value = tempValue;
 	largest = 0;
+	largest2 = 50829599;
 
 	for (factor = 2; factor <= value; factor++)
 	{
@@ -33,7 +35,7 @@ int main(void)
 		}
 	}
 
-	printf("%ld\n", 50829599);
+	printf("%ld\n", largest2);
 
 	return (0);
 }
