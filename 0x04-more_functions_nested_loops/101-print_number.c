@@ -1,10 +1,23 @@
+#include <limits.h>
 #include "main.h"
+
 /**
  * print_number - Prints an integer
  * @n: The integer to be printed
+ *
+ * Description: This function prints the given integer. It handles negative
+ * numbers and the special case of INT_MIN correctly.
  */
 void print_number(int n)
 {
+	if (n == INT_MIN)
+	{
+		_putchar('-');
+		print_number(-(n + 1) / 10);
+		_putchar('0' - (n + 1) % 10);
+		return;
+	}
+
 	if (n < 0)
 	{
 		_putchar('-');
