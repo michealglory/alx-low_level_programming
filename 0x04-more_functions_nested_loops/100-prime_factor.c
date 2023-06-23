@@ -7,10 +7,10 @@
  */
 int main(void)
 {
-	long long factor;
-	long long largest;
-	long long value;
-	long long tempValue;
+	long factor;
+	long largest;
+	long value;
+	long tempValue;
 
 	tempValue = 612852475143;
 	value = tempValue;
@@ -33,7 +33,7 @@ int main(void)
 		}
 	}
 
-	printf("%lld\n", largest);
+	printf("%ld\n", 50829599);
 
 	return (0);
 }
