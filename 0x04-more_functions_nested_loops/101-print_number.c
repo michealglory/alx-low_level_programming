@@ -13,8 +13,8 @@ void print_number(int n)
 	if (n == INT_MIN)
 	{
 		_putchar('-');
-		print_number(-(n - 1) / 10);
-		_putchar('0' - (n - 1) % 10);
+		print_number(-(n) / 10);
+		_putchar('0' - (n) % 10);
 		return;
 	}
 
