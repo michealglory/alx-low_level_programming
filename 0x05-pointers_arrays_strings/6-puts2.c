@@ -12,7 +12,7 @@ void puts2(char *str)
 	{
 		if (str[i] >= 32 && str[i] <= 126)
 			_putchar(str[i]);
-			i += 2;
+		i += 2;
 	}
 
 	_putchar('\n');
