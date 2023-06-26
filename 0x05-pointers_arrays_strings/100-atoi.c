@@ -17,13 +17,10 @@ int _atoi(char *s)
 		i++;
 
 	/* Check for optional sign character */
-	if (s[i] == '-')
+	while (s[i] == '-' || s[i] == '+')
 	{
-		sign = -1;
-		i++;
-	}
-	else if (s[i] == '+')
-	{
+		if (s[i] == '-')
+			sign *= -1;
 		i++;
 	}
 
