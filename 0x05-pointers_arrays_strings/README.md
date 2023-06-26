@@ -1,1 +1,2 @@
-Tasks and projects on C pointers, arrays and strings
+# alx-low_level_programming
+Tasks and projects on low level programming
