@@ -24,11 +24,19 @@ int _atoi(char *s)
 		i++;
 	}
 
-	/* Process digits until non-digit character or space */
-	while (s[i] >= '0' && s[i] <= '9' && s[i] != ' ')
+	/* Process digits */
+	while (s[i] != '\0')
 	{
-		/* Accumulate value by multiplying result by 10 and adding digit */
-		result = result * 10 + (s[i] - '0');
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			/* Accumulate value by multiplying result by 10 and adding digit */
+			result = result * 10 + (s[i] - '0');
+		}
+		else if (result != 0)
+		{
+			break;
+		}
+
 		i++;
 	}
 
