@@ -24,8 +24,8 @@ int _atoi(char *s)
 		i++;
 	}
 
-	/* Process digits until non-digit character */
-	while (s[i] >= '0' && s[i] <= '9')
+	/* Process digits until non-digit character or space */
+	while (s[i] >= '0' && s[i] <= '9' && s[i] != ' ')
 	{
 		/* Accumulate value by multiplying result by 10 and adding digit */
 		result = result * 10 + (s[i] - '0');
