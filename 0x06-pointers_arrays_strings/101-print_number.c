@@ -1,3 +1,4 @@
+#include <limits.h>
 #include "main.h"
 
 /**
@@ -9,7 +10,7 @@
  */
 void print_number(int n)
 {
-	if (n == 20)
+	if (n == INT_MIN)
 	{
 		_putchar('-');
 		print_number(-(n) / 10);
