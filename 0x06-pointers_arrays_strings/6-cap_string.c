@@ -10,8 +10,9 @@ int isSeparator(char c)
 {
 	char separators[] = " \t\n,;.!?\"(){}";
 	int numSeparators = sizeof(separators) / sizeof(separators[0]);
+	int i;
 
-	for (int i = 0; i < numSeparators; i++)
+	for (i = 0; i < numSeparators; i++)
 	{
 		if (c == separators[i])
 			return (1);
@@ -29,17 +30,20 @@ int isSeparator(char c)
 char *cap_string(char *str)
 {
 	int capitalize = 1;
+	int i;
 
-	for (int i = 0; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (capitalize && str[i] >= 'a' && str[i] <= 'z')
+		if (capitalize && (str[i] >= 'a' && str[i] <= 'z'))
 		{
 			str[i] = str[i] - 'a' + 'A';
+			capitalize = 0;
 		}
-
-		capitalize = isSeparator(str[i]);
-
-		if (!capitalize && str[i] >= 'A' && str[i] <= 'Z')
+		else if (isSeparator(str[i]))
+		{
+			capitalize = 1;
+		}
+		else if (!isSeparator(str[i]) && (str[i] >= 'A' && str[i] <= 'Z'))
 		{
 			str[i] = str[i] - 'A' + 'a';
 		}
@@ -47,4 +51,3 @@ char *cap_string(char *str)
 
 	return (str);
 }
-
