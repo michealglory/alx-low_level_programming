@@ -34,18 +34,14 @@ char *cap_string(char *str)
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
+		if (str[i] > 0)
+		{
+			capitalize = (isSeparator(str[i - 1]));
+		}
+
 		if (capitalize && (str[i] >= 'a' && str[i] <= 'z'))
 		{
-			str[i] = str[i] - 'a' + 'A';
-			capitalize = 0;
-		}
-		else if (isSeparator(str[i]))
-		{
-			capitalize = 1;
-		}
-		else if (!isSeparator(str[i]) && (str[i] >= 'A' && str[i] <= 'Z'))
-		{
-			str[i] = str[i] - 'A' + 'a';
+			str[i] = str[i] - ('a' - 'A');
 		}
 	}
 
