@@ -12,5 +12,7 @@ char *cap_string(char *);
 int isSeparator(char c);
 char *leet(char *);
 char *rot13(char *);
+void print_number(int n);
+void print_positive_number(unsigned int n);
 
 #endif /* MAIN_H */
