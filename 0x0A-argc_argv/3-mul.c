@@ -20,7 +20,13 @@ int main(int argc, char *argv[])
 	num2 = _atoi(argv[2]);
 	result = num1 * num2;
 
-	_putchar(result + '0');
+	if (result < 0)
+	{
+		_putchar('-');
+		result = -result;
+	}
+
+	_puts(_itoa(result));
 	_putchar('\n');
 
 	return (0);
@@ -65,5 +71,33 @@ void _puts(char *str)
 		_putchar(str[i]);
 		i++;
 	}
+}
+
+/**
+ * _itoa - Converts an integer to a string
+ * @num: The integer to be converted
+ * Return: The converted string
+ */
+char *_itoa(int num)
+{
+	static char buffer[12];
+	int i = 10;
+
+	buffer[11] = '\0';
+
+	if (num == 0)
+	{
+		buffer[i] = '0';
+		return (&buffer[i]);
+	}
+
+	while (num != 0)
+	{
+		buffer[i] = (num % 10) + '0';
+		num /= 10;
+		i--;
+	}
+
+	return (&buffer[i + 1]);
 }
 
