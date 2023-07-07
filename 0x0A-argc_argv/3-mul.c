@@ -3,8 +3,7 @@
 /**
  * main - Entry point of the program
  * @argc: The number of command-line arguments
- * @argv: An array of command-line argument strings
- *
+ * @argv: An array of strings representing the arguments
  * Return: 0 on success, 1 on error
  */
 int main(int argc, char *argv[])
@@ -13,13 +12,12 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		_putchar("Error\n");
+		_puts("Error");
 		return (1);
 	}
 
 	num1 = _atoi(argv[1]);
 	num2 = _atoi(argv[2]);
-
 	result = num1 * num2;
 
 	_putchar(result + '0');
@@ -29,16 +27,15 @@ int main(int argc, char *argv[])
 }
 
 /**
- * _atoi - Convert a string to an integer
- * @str: The string to convert
- *
+ * _atoi - Converts a string to an integer
+ * @str: The string to be converted
  * Return: The converted integer
  */
 int _atoi(char *str)
 {
+	int i = 0;
 	int sign = 1;
 	int result = 0;
-	int i = 0;
 
 	if (str[0] == '-')
 	{
@@ -46,18 +43,27 @@ int _atoi(char *str)
 		i++;
 	}
 
-	for (; str[i] != '\0'; i++)
+	while (str[i] != '\0')
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			result = result * 10 + (str[i] - '0');
-		}
-		else
-		{
-			break;
-		}
+		result = result * 10 + (str[i] - '0');
+		i++;
 	}
 
-	return (sign * result);
+	return (result * sign);
+}
+
+/**
+ * _puts - Prints a string to stdout
+ * @str: The string to be printed
+ */
+void _puts(char *str)
+{
+	int i = 0;
+
+	while (str[i] != '\0')
+	{
+		_putchar(str[i]);
+		i++;
+	}
 }
 
