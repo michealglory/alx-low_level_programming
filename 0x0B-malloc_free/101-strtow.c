@@ -1,35 +1,99 @@
 #include <stdlib.h>
-#include <string.h>
-#include "main.h"
+#include <stdio.h>
 
 /**
- * count_words - Counts the number of words in a string.
- * @str: The string to count words from.
- * Return: The number of words.
+ * strtow - Split a string into words
+ * @str: The string to split
+ *
+ * This function takes a string and splits it into individual words.
+ * The words are stored in a dynamically allocated array of strings.
+ * The array is terminated by a NULL pointer.
+ *
+ * Return: A pointer to the array of words, or NULL if an error occurs.
+ */
+char **strtow(char *str)
+{
+	if (str == NULL || *str == '\0')
+		return (NULL);
+
+	int word_count = count_words(str);
+
+	if (word_count == 0)
+		return (NULL);
+
+	char **words = allocate_words(word_count);
+
+	if (words == NULL)
+		return (NULL);
+
+	int i, j, k;
+	int start = 0, end = 0;
+
+	for (i = 0; i < word_count; i++)
+	{
+		while (str[start] == ' ')
+			start++;
+
+		end = start;
+		while (str[end] != ' ' && str[end] != '\0')
+			end++;
+
+		words[i] = extract_word(str, start, end);
+
+		start = end;
+	}
+
+	words[word_count] = NULL;
+
+	return (words);
+}
+
+/**
+ * count_words - Count the number of words in a string
+ * @str: The string to count words in
+ *
+ * This function counts the number of words in a string. Words
+ * are separated by spaces. If the string is empty or contains
+ * only spaces, the function returns 0.
+ *
+ * Return: The number of words in the string.
  */
 int count_words(char *str)
 {
 	int count = 0;
-	int len = strlen(str);
-	int i;
+	int is_word = 0;
 
-	for (i = 0; i < len; i++)
+	while (*str)
 	{
-		if (str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
+		if (*str != ' ' && !is_word)
+		{
 			count++;
+			is_word = 1;
+		}
+		else if (*str == ' ')
+		{
+			is_word = 0;
+		}
+
+		str++;
 	}
 
 	return (count);
 }
 
 /**
- * allocate_words - Allocates memory for an array of words.
- * @count: The number of words to allocate.
- * Return: Pointer to the allocated memory or NULL if it fails.
+ * allocate_words - Allocate memory for an array of words
+ * @count: The number of words to allocate memory for
+ *
+ * This function allocates memory for an array of words.
+ * The size of the array is determined by the count parameter.
+ * The memory is allocated dynamically using malloc.
+ *
+ * Return: A pointer to the allocated memory, or NULL if an error occurs.
  */
 char **allocate_words(int count)
 {
-	char **words = malloc(sizeof(char *) * (count + 1));
+	char **words = malloc((count + 1) * sizeof(char *));
 
 	if (words == NULL)
 		return (NULL);
@@ -38,68 +102,33 @@ char **allocate_words(int count)
 }
 
 /**
- * extract_word - Extracts a word from a string.
- * @str: The string to extract the word from.
- * @start: The starting index of the word.
- * @end: The ending index of the word.
- * Return: The extracted word or NULL if it fails.
+ * extract_word - Extract a word from a string
+ * @str: The string to extract a word from
+ * @start: The start position of the word in the string
+ * @end: The end position of the word in the string
+ *
+ * This function extracts a word from a string. The word is
+ * specified by the start and end positions in the string.
+ * The extracted word is stored in a dynamically allocated string.
+ * The memory is allocated using malloc.
+ *
+ * Return: A pointer to the extracted word, or NULL if an error occurs.
  */
 char *extract_word(char *str, int start, int end)
 {
-	int word_length = end - start;
-	char *word = malloc(sizeof(char) * (word_length + 1));
+	int length = end - start;
+	char *word = malloc((length + 1) * sizeof(char));
 
 	if (word == NULL)
 		return (NULL);
 
-	strncpy(word, &str[start], word_length);
-	word[word_length] = '\0';
+	int i, j;
+
+	for (i = start, j = 0; i < end; i++, j++)
+		word[j] = str[i];
+
+	word[length] = '\0';
 
 	return (word);
-}
-
-/**
- * strtow - Splits a string into words.
- * @str: The string to be split.
- * Return: Pointer to an array of strings (words) or NULL if it fails.
- */
-char **strtow(char *str)
-{
-	int i, j, k, len, count = 0;
-	char **words, *word;
-
-	if (str == NULL || *str == '\0')
-		return (NULL);
-
-	len = strlen(str);
-	count = count_words(str);
-	words = allocate_words(count);
-
-	if (words == NULL)
-		return (NULL);
-
-	j = 0;
-	for (i = 0; i < len; i++)
-	{
-		if (str[i] != ' ')
-		{
-			k = i;
-			while (str[k] != ' ' && str[k] != '\0')
-				k++;
-			word = extract_word(str, i, k);
-			if (word == NULL)
-			{
-				free(words);
-				return (NULL);
-			}
-			words[j] = word;
-			j++;
-			i = k - 1;
-		}
-	}
-
-	words[j] = NULL;
-
-	return (words);
 }
 
