@@ -57,12 +57,18 @@ char *extract_word(char *str, int start, int end)
 
 	return (word);
 }
-
 /**
  * strtow - Splits a string into words.
  * @str: The string to be split.
+ *
+ * This function takes a string and splits it into individual words.
+ * The words are stored in a dynamically allocated array of strings.
+ * The array is terminated by a NULL pointer. If the string is empty
+ * or contains only spaces, the function returns NULL.
+ *
  * Return: Pointer to an array of strings (words) or NULL if it fails.
  */
+
 char **strtow(char *str)
 {
 	int i, j, k, len, count = 0;
@@ -73,6 +79,10 @@ char **strtow(char *str)
 
 	len = strlen(str);
 	count = count_words(str);
+
+	if (count == 0)
+		return (NULL);
+
 	words = allocate_words(count);
 
 	if (words == NULL)
@@ -98,7 +108,8 @@ char **strtow(char *str)
 		}
 	}
 
-	words[j] = NULL;
+	words[j] = (NULL);
 
 	return (words);
 }
+
