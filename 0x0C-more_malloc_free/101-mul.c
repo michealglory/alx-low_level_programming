@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 	if (argc != 3 || !is_positive_number(argv[1]) || !is_positive_number(argv[2]))
 	{
 		printf("Error\n");
-		return (98);
+		return (1);
 	}
 
 	num1 = atoi(argv[1]);
