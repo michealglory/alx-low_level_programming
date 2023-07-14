@@ -2,11 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void print_result(char *result, int length);
-char *multiply_strings(char n, char *num, int num_length, char *result, int result_index);
-int is_digit(char **args);
-void initialize_string(char *str, int length);
-
 /**
  * print_result - Prints the result string
  * @result: The result string
@@ -33,7 +28,8 @@ void print_result(char *result, int length)
 }
 
 /**
- * multiply_strings - Multiplies a char with a string and places the answer into the result string
+ * multiply_strings - Multiplies a char with a string and
+ * places the answer into the result string
  * @n: The char to multiply
  * @num: The string to multiply
  * @num_length: The length of the num string
@@ -42,7 +38,8 @@ void print_result(char *result, int length)
  *
  * Return: Pointer to the result string, or NULL on failure
  */
-char *multiply_strings(char n, char *num, int num_length, char *result, int result_index)
+char *multiply_strings(char n, char *num, int num_length,
+		char *result, int result_index)
 {
 	int j, k, product, product_remainder, sum, sum_remainder;
 
@@ -125,7 +122,6 @@ int main(int argc, char *argv[])
 			_putchar(error_message[ti]);
 		exit(98);
 	}
-
 	for (length1 = 0; argv[1][length1]; length1++)
 		;
 	for (length2 = 0; argv[2][length2]; length2++)
@@ -139,10 +135,10 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	initialize_string(result, result_length - 1);
-
 	for (ti = length2 - 1, i = 0; ti >= 0; ti--, i++)
 	{
-		temp = multiply_strings(argv[2][ti], argv[1], length1 - 1, result, (result_length - 2) - i);
+		temp = multiply_strings(argv[2][ti], argv[1], length1 - 1,
+				result, (result_length - 2) - i);
 		if (temp == NULL)
 		{
 			for (ti = 0; error_message[ti]; ti++)
@@ -151,8 +147,6 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 	}
-
 	print_result(result, result_length - 1);
 	return (0);
 }
-
