@@ -7,7 +7,8 @@
  * @d: Pointer to the struct dog.
  *
  * Description: Prints the name, age, and owner of the struct dog.
- *              If an element of d is NULL, it prints (nil) instead of the element.
+ *              If an element of d is NULL, it prints (nil)
+ *		instead of the element.
  *              If d is NULL, it does not print anything.
  */
 void print_dog(struct dog *d)
