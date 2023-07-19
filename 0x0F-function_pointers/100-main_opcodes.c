@@ -2,21 +2,21 @@
 #include <stdlib.h>
 
 /**
- * main - Entry point of the program
- * @argc: Number of arguments passed to the program
- * @argv: Array of pointers to the arguments
+ * main - Prints the opcodes of its own main function
+ * @argc: The number of arguments
+ * @argv: An array of arguments
  *
  * Return: Always 0 (Success)
  */
 int main(int argc, char *argv[])
 {
-	int i;
-	int num_bytes;
+	int num_bytes, i;
+	char *main_function;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
-		return (1);
+		exit(1);
 	}
 
 	num_bytes = atoi(argv[1]);
@@ -24,16 +24,20 @@ int main(int argc, char *argv[])
 	if (num_bytes < 0)
 	{
 		printf("Error\n");
-		return (2);
+		exit(2);
 	}
 
-	unsigned char *main_ptr = (unsigned char *)main;
+	main_function = (char *)main;
 
 	for (i = 0; i < num_bytes; i++)
 	{
-		printf("%02x ", main_ptr[i]);
+		if (i == num_bytes - 1)
+		{
+			printf("%02hhx\n", main_function[i]);
+			break;
+		}
+		printf("%02hhx ", main_function[i]);
 	}
-	printf("\n");
 
 	return (0);
 }
