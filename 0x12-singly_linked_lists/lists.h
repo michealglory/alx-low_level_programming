@@ -5,16 +5,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-/** node - A data structure representing a
- *  singly linked list node.
+/**
+ * struct node - singly linked list
+ * @str: string - (malloc'ed string)
+ * @len: length of the string
+ * @next: points to the next node
  *
- *  The node struct is used to create nodes
- *  for a singly linked list. Each
- *  node contains a string pointer 'str', an
- *  unsigned integer 'len' to store
- *  the length of the string (excluding the
- *  null-terminator), and a pointer
- *  'next' that points to the next node in the list.
+ * Description: singly linked list node structure
  */
 typedef struct node
 {
