@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * main - copies the content of a file to another file
  * @argc: number of arguments
@@ -61,7 +60,7 @@ int main(int argc, char *argv[])
  * This function prints an error message to stderr based on the exception
  * type and exits with specific error codes to indicate the type of error.
  */
-void handle_exception(int descriptor, int file_doc, char *filename,
+void handleException(int descriptor, int file_doc, char *filename,
 		char rw_mode)
 {
 	if (rw_mode == 'C' && descriptor == -1)
