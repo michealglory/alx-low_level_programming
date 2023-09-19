@@ -1,1 +1,1 @@
-tasks and projects on dynamic library
+generates dynamic library
